@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="body-wrapper">
-    <h1>Queries</h1>
+    <h1>Phase III. Queries</h1>
 
     <nav class="tabs">
         <div class="tab active" data-tab="1">1. Forgotten bag</div>
@@ -19,15 +19,62 @@
         <div class="tab" data-tab="5">5. A reward</div>
     </nav>
 
-    <section data-tab="1" class="active">1</section>
-    <section data-tab="2">2</section>
-    <section data-tab="3">3</section>
-    <section data-tab="4">4</section>
-    <section data-tab="5">5</section>
+    <section data-tab="1" class="active">
+        <blockquote>
+            A patient claims that she forgot her bag in the room where she had a medical
+            appointment on the last time she came to the hospital. The problem is that she had
+            several appointments on that same day. She believes that the doctor’s name (first or
+            last name, but not both) starts with “M” or “L” - she doesn’t have a good memory
+            either. Find all the possible doctors that match the description.
+        </blockquote>
+        <code>
+            select a.* <br>
+            from usr.patients as p <br>
+            cross join meeting.patients_last_appointments_for_query_1(p.id, '(L|M)%', '(L|M)%') as a;
+        </code>
+    </section>
+    <section data-tab="2">
+        <blockquote>
+            The hospital management team wants to get statistics on the appointments per
+            doctors. For each doctor, the report should present the total and average number
+            of appointments in each time slot of the week during the last year. For example,
+            a report generated on 01/12/2019 should consider data since 01/12/2018.
+        </blockquote>
+        <code>
+            select r.* <br>
+            from meeting.doctors_appointments_report('2018-12-01', '2019-12-01') as r;
+        </code>
+    </section>
+    <section data-tab="3">
+        <blockquote>
+            The hospital wants to retrieve information on the patients who had an appointment
+            during the previous month. However, an information which is relevant for some managers
+            is to find which patients visited the hospital every week, at least twice a week.
+            Such patients probably should receive home visits from doctors.
+        </blockquote>
+    </section>
+    <section data-tab="4">
+        <blockquote>
+            Managers want to project the expected monthly income if the hospital start to charge
+            a small value from each patient. The value per appointment would depend on the age
+            and the number of appointments per month. The rules are summarised in the table.
+            Based on the rules above, what would be the income of the hospital in the previous month?
+        </blockquote>
+    </section>
+    <section data-tab="5">
+        <blockquote>
+            The managers want to reward experienced and long serving doctors. For that, they want
+            to find out the doctors who have attended at least five patients per year for the
+            last 10 years. Also, such doctors should have had attended a total of at least 100
+            patients in this period.
+        </blockquote>
+    </section>
 </div>
 
-<!--<div class="table-wrap">
-    <table class="highlight">
+<div class="table-wrap">
+    {% if data %}
+        {{ data }} - it is fetched from the server. Here will be table
+    <!--<table class="highlight">
         <thead>
         <tr>
             <th>Name</th>
@@ -53,8 +100,10 @@
             <td>$7.00</td>
         </tr>
         </tbody>
-    </table>
-</div>-->
+    </table>-->
+    {% endif %}
+</div>
+
 <script src="/static/code.js"></script>
 </body>
 </html>

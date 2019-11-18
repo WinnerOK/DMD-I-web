@@ -10,6 +10,10 @@ body {
     width: 0;
 }
 
+code {
+    display: block;
+}
+
 .body-wrapper {
     padding: 24px;
     width: 60%;
@@ -50,7 +54,25 @@ body {
 }
 
 .tab.active {
-    border-bottom: 2px solid rgba(200, 100, 240, 0.6);
+    border-bottom: 2px solid rgba(0,150,191,.67);
+}
+
+@media screen and (max-width: 992px) {
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab {
+        border-bottom: none;
+        border-left: 2px solid rgba(196, 196, 196, 0.6);
+        border-radius: 0 5px 5px 0;
+        transition: border-left .2s;
+    }
+
+    .tab.active {
+        border-bottom: none;
+        border-left: 2px solid rgba(0,150,191,.67);
+    }
 }
 
 .body-wrapper > section:not(.active) {

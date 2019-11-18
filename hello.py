@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request
 import utils
 
 app = Flask(__name__)
@@ -9,7 +9,11 @@ def senc_static(path):
 
 @app.route('/')
 def index():
-    return render_template('index.html', name="HFDSGSDKLFHHJK")
+    id = request.args.get('id')
+    if id:
+        return render_template('index.html', data=id)
+    else:
+        return render_template('index.html', data=1)
 
 
 @app.route('/cred/postgres')
