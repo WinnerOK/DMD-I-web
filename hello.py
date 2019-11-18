@@ -10,11 +10,11 @@ def senc_static(path):
 @app.route('/')
 def index():
     id = request.args.get('id')
-    data, head = exe_first_query()
-    if id:
+    if (id and int(id) == 1) or not id:
+        data, head = exe_first_query()
         return render_template('index.html', data=data, head=head)
     else:
-        return render_template('index.html', data=data, head=head)
+        return render_template('index.html', data=0, head=0)
 
 
 @app.route('/cred/postgres')
