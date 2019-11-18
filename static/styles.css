@@ -133,7 +133,7 @@ tr {
 
 td, th {
     padding: 15px 5px;
-    min-width: 100px;
+    min-width: 150px;
     display: table-cell;
     text-align: left;
     vertical-align: middle;

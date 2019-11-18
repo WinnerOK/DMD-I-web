@@ -72,35 +72,31 @@
 </div>
 
 <div class="table-wrap">
-    {% if data %}
-        {{ data }} - it is fetched from the server. Here will be table
-    <!--<table class="highlight">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Item Name</th>
-            <th>Item Price</th>
-        </tr>
-        </thead>
+    {% if head %}
+        <table class="highlight">
+            <thead>
+                <tr>
+                    {% for entry in head %}
+                        <th>{{ entry }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
 
-        <tbody>
-        <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-        </tr>
-        <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-        </tr>
-        <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-        </tr>
-        </tbody>
-    </table>-->
+            <tbody>
+            {% for row in data %}
+                <tr>
+                    {% for entry in row %}
+                        <td>{{ entry }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            <!--<tr>
+                <td>Alvin</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+            </tr>-->
+            </tbody>
+        </table>
     {% endif %}
 </div>
 
