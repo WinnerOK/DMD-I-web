@@ -2,17 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ name }}</title>
+    <title>Phase III | Database project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
     <link rel="stylesheet" type="text/css" href="/static/styles.css">
 </head>
 <body>
 <div class="body-wrapper">
-    <h2>Queries</h2>
+    <h1>Queries</h1>
+
+    <nav class="tabs">
+        <div class="tab active" data-tab="1">1. Forgotten bag</div>
+        <div class="tab" data-tab="2">2. Statistics</div>
+        <div class="tab" data-tab="3">3.Regular customers</div>
+        <div class="tab" data-tab="4">4. Incomes</div>
+        <div class="tab" data-tab="5">5. A reward</div>
+    </nav>
+
+    <section data-tab="1" class="active">1</section>
+    <section data-tab="2">2</section>
+    <section data-tab="3">3</section>
+    <section data-tab="4">4</section>
+    <section data-tab="5">5</section>
 </div>
 
-<div class="table-wrap">
+<!--<div class="table-wrap">
     <table class="highlight">
         <thead>
         <tr>
@@ -40,6 +54,7 @@
         </tr>
         </tbody>
     </table>
-</div>
+</div>-->
+<script src="/static/code.js"></script>
 </body>
 </html>

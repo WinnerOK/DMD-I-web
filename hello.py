@@ -3,8 +3,8 @@ import utils
 
 app = Flask(__name__)
 
-@app.route('/css/<path:path>')
-def send_js(path):
+@app.route('/static/<path:path>')
+def senc_static(path):
     return send_from_directory('static', path)
 
 @app.route('/')

@@ -27,6 +27,37 @@ body {
 }
 
 /* _____ */
+/* TABS STYLES */
+
+.tabs {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab {
+    border-bottom: 2px solid rgba(196, 196, 196, 0.6);
+    font-weight: 500;
+    padding: .8em .3em .5em;
+    cursor: pointer;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    transition: border-bottom .2s;
+}
+
+.tab:hover {
+    background: rgba(196, 196, 196, 0.1);
+}
+
+.tab.active {
+    border-bottom: 2px solid rgba(200, 100, 240, 0.6);
+}
+
+.body-wrapper > section:not(.active) {
+    display: none;
+}
+
+/* _____ */
 /* TABLE STYLES */
 
 .table-wrap {
