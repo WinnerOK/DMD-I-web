@@ -20,3 +20,8 @@ def get_connection() -> Tuple[connection, cursor]:
     conn = connect(' '.join(map(lambda item: '='.join(item), credentials.items())))
     cur = conn.cursor()
     return conn, cur
+
+# conn, cursor = get_connection()
+# cursor.execute('')
+# a = cursor.fetchall()
+

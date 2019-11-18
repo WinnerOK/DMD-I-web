@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+}
+
+.body-wrapper {
+    padding: 24px;
+    width: 60%;
+    margin: auto;
+}
+
+@media screen and (max-width: 992px) {
+    .body-wrapper {
+        width: 90%;
+    }
+
+    .table-wrap {
+        width: 100%;
+    }
+}
+
+/* _____ */
+/* TABLE STYLES */
+
+.table-wrap {
+    margin: auto;
+    width: 90%;
+    overflow: scroll;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .1);
+}
+
+table {
+    margin-bottom: 0;
+}
+
+table, th, td {
+    border: none;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background: #f2f2f2;
+}
+
+table {
+    width: 100%;
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table.highlight > tbody > tr {
+    -webkit-transition: background-color .25s ease;
+    transition: background-color .25s ease;
+}
+
+table.highlight > tbody > tr:hover {
+    background-color: rgba(242, 242, 242, 0.5);
+}
+
+tbody tr:nth-child(2n) {
+    background-color: white;
+}
+
+table.centered thead tr th, table.centered tbody tr td {
+    text-align: center;
+}
+
+tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+td, th {
+    padding: 15px 5px;
+    min-width: 100px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    border-radius: 2px;
+}
