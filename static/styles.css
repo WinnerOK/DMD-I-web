@@ -12,6 +12,8 @@ body {
 
 code {
     display: block;
+    width: 100%;
+    overflow-x: scroll;
 }
 
 .body-wrapper {
@@ -23,10 +25,6 @@ code {
 @media screen and (max-width: 992px) {
     .body-wrapper {
         width: 90%;
-    }
-
-    .table-wrap {
-        width: 100%;
     }
 }
 
@@ -87,6 +85,12 @@ code {
     width: 90%;
     overflow: scroll;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, .1);
+}
+
+@media screen and (max-width: 992px) {
+    .table-wrap {
+        width: 100%;
+    }
 }
 
 table {
