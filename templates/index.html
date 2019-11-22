@@ -14,9 +14,10 @@
     <nav class="tabs">
         <div class="tab active" data-tab="1">1. Forgotten bag</div>
         <div class="tab" data-tab="2">2. Statistics</div>
-        <div class="tab" data-tab="3">3.Regular customers</div>
+        <div class="tab" data-tab="3">3. Regular customers</div>
         <div class="tab" data-tab="4">4. Incomes</div>
         <div class="tab" data-tab="5">5. A reward</div>
+        <div class="tab" data-tab="6">Custom select</div>
     </nav>
 
     <section data-tab="1" class="active">
@@ -60,6 +61,9 @@
             and the number of appointments per month. The rules are summarised in the table.
             Based on the rules above, what would be the income of the hospital in the previous month?
         </blockquote>
+        <code>
+            select finance.get_possible_profit_last_month() as profit_last_month;
+        </code>
     </section>
     <section data-tab="5">
         <blockquote>
@@ -67,6 +71,14 @@
             to find out the doctors who have attended at least five patients per year for the
             last 10 years. Also, such doctors should have had attended a total of at least 100
             patients in this period.
+        </blockquote>
+        <code>
+            select * from usr.get_experiences_doctors();
+        </code>
+    </section>
+    <section data-tab="6">
+        <blockquote>
+            Create yours query
         </blockquote>
     </section>
 </div>
@@ -83,18 +95,13 @@
             </thead>
 
             <tbody>
-            {% for row in data %}
-                <tr>
-                    {% for entry in row %}
-                        <td>{{ entry }}</td>
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-            <!--<tr>
-                <td>Alvin</td>
-                <td>Eclair</td>
-                <td>$0.87</td>
-            </tr>-->
+                {% for row in data %}
+                    <tr>
+                        {% for entry in row %}
+                            <td>{{ entry }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     {% endif %}

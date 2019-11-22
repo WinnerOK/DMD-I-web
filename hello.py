@@ -1,5 +1,5 @@
 from flask import Flask, render_template, send_from_directory, request
-from queries import exe_first_query
+import queries
 from utils import get_pg_credentials
 app = Flask(__name__)
 
@@ -11,10 +11,11 @@ def senc_static(path):
 def index():
     id = request.args.get('id')
     if (id and int(id) == 1) or not id:
-        data, head = exe_first_query()
+        data, head = queries.execute_query(1)
         return render_template('index.html', data=data, head=head)
-    else:
-        return render_template('index.html', data=0, head=0)
+    elif (id):
+        data, head = queries.execute_query(int(id))
+        return render_template('index.html', data=data, head=head)
 
 
 @app.route('/cred/postgres')
