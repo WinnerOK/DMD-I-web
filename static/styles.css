@@ -22,6 +22,20 @@ code {
     margin: auto;
 }
 
+.hidden {
+    display: none;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+#exquery {
+    margin-right: 2em;
+}
+
 @media screen and (max-width: 992px) {
     .body-wrapper {
         width: 90%;

@@ -22,6 +22,12 @@ def index():
 def postgres_cred():
     return get_pg_credentials()
 
+@app.route('/custom', methods=['POST'])
+def custom_query():
+    query = request.get_json()['query']
+    data, head = queries.custom_query(query)
+    return render_template('index.html', data=data, head=head)
+
 
 if __name__ == '__main__':
     app.run()
