@@ -1,6 +1,7 @@
 from flask import Flask, render_template, send_from_directory, request
 import queries
 from utils import get_pg_credentials
+
 app = Flask(__name__)
 
 @app.route('/static/<path:path>')
