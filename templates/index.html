@@ -53,6 +53,10 @@
             is to find which patients visited the hospital every week, at least twice a week.
             Such patients probably should receive home visits from doctors.
         </blockquote>
+        <code>
+            select * <br>
+            from usr.frequent_patients((now() - interval '1 month')::date,'now'::date);
+        </code>
     </section>
     <section data-tab="4">
         <blockquote>

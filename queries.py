@@ -14,9 +14,9 @@ def execute_query(num):
             from meeting.doctors_appointments_report('2018-12-01', '2019-12-01') as r;
         """)
     elif num == 3:
-        # TODO: insert 3rd query
         cursor.execute("""
-            select * from usr.get_experiences_doctors();
+            select *
+            from usr.frequent_patients((now() - interval '1 month')::date,'now'::date);
         """)
     elif num == 4:
         cursor.execute("""
