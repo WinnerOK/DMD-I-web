@@ -42,8 +42,9 @@
             a report generated on 01/12/2019 should consider data since 01/12/2018.
         </blockquote>
         <code>
-            select r.* <br>
-            from meeting.doctors_appointments_report('2018-12-01', '2019-12-01') as r;
+            select u.first_name, u.last_name,  r.*<br>
+            from meeting.doctors_appointments_report('2018-12-01', '2019-12-01') as r join usr.users as u on r.doctor_id=u.id<br>
+            order by doctor_id, day_of_week, time_slot;
         </code>
     </section>
     <section data-tab="3">

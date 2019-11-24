@@ -10,8 +10,9 @@ def execute_query(num):
         """)
     elif num == 2:
         cursor.execute("""
-            select r.*
-            from meeting.doctors_appointments_report('2018-12-01', '2019-12-01') as r;
+            select u.first_name, u.last_name,  r.*
+            from meeting.doctors_appointments_report('2018-12-01', '2019-12-01') as r join usr.users as u on r.doctor_id=u.id
+            order by doctor_id, day_of_week, time_slot;
         """)
     elif num == 3:
         cursor.execute("""
