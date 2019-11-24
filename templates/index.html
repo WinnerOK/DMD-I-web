@@ -42,8 +42,9 @@
             a report generated on 01/12/2019 should consider data since 01/12/2018.
         </blockquote>
         <code>
-            select u.first_name, u.last_name,  r.*<br>
-            meeting.doctors_appointments_report((current_date - interval '1 year')::date, current_date) as join usr.users as u on r.doctor_id = u.id<br>
+            select u.first_name, u.last_name, r.*<br>
+            from meeting.doctors_appointments_report((current_date - interval '1 year')::date, current_date) as r<br>
+            join usr.users as u on r.doctor_id = u.id<br>
             order by doctor_id, day_of_week, time_slot;
         </code>
     </section>

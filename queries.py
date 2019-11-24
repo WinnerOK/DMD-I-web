@@ -10,8 +10,9 @@ def execute_query(num):
         """)
     elif num == 2:
         cursor.execute("""
-            select u.first_name, u.last_name,  r.*
-            meeting.doctors_appointments_report((current_date - interval '1 year')::date, current_date) as join usr.users as u on r.doctor_id = u.id
+            select u.first_name, u.last_name, r.*
+            from meeting.doctors_appointments_report((current_date - interval '1 year')::date, current_date) as r
+            join usr.users as u on r.doctor_id = u.id
             order by doctor_id, day_of_week, time_slot;
         """)
     elif num == 3:
