@@ -1,5 +1,18 @@
 let activeTab = 1;
 
+let progress = 0;
+let interval = null;
+const startLoad = (e) => {
+  if (!e || parseInt(e.target.getAttribute('data-tab')) !== 6) {
+    progress = 0;
+    interval = setInterval(() => {
+      if (progress >= 100) progress = 0;
+      else progress += 10;
+      document.getElementById('progress').style.width = progress + '%';
+    }, 100);
+  }
+};
+
 const changeTab = (e) => {
   document.querySelectorAll('.tab').forEach(el => {
     if (el.classList.contains('active')) {
@@ -17,6 +30,9 @@ const changeTab = (e) => {
 
   if (parseInt(activeTab) === 6) {
     document.querySelector('.table-wrap').classList.add('hidden');
+    clearInterval(interval);
+    progress = 0;
+    document.getElementById('progress').style.width = progress + '%';
   } else {
     changeRoute(activeTab);
     document.querySelector('.table-wrap').classList.remove('hidden');
@@ -25,7 +41,8 @@ const changeTab = (e) => {
 };
 
 document.querySelectorAll('.tab').forEach(el => {
-  el.addEventListener('click', changeTab);
+  el.addEventListener('mousedown', startLoad);
+  el.addEventListener('mouseup', changeTab);
 });
 
 function changeRoute(name) {
@@ -38,6 +55,7 @@ document.querySelector('#exquery').addEventListener('click', () => {
 
 
 document.querySelector('#execute').addEventListener('click', () => {
+  startLoad();
   getData('/custom', 'POST', {
     query: document.querySelector('#custom-select').textContent,
   });
@@ -58,6 +76,10 @@ function getData(url, method, data) {
         .replaceChild(table, document.querySelector('.table-wrap'));
 
       document.querySelector('.table-wrap').classList.remove('hidden');
+
+      clearInterval(interval);
+      progress = 0;
+      document.getElementById('progress').style.width = progress + '%';
     }
   };
   xhr.send(JSON.stringify(data));
