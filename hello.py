@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory, request
+from flask import Flask, render_template, send_from_directory, request, send_file
 import fastjsonschema
 import queries
 import populating
@@ -55,7 +55,7 @@ def populate():
 
 @app.route('/download')
 def download():
-    return send_from_directory('populating', 'queries.sql', mime_type='text/plain', attachment_filename='queries.sql', as_attachment=True)
+    return send_file('populating/queries.sql', mimetype='plain/text', as_attachment=True, attachment_filename='queries.sql')
 
 
 @app.route('/custom', methods=['POST'])

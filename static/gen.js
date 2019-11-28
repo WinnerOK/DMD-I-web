@@ -56,7 +56,7 @@ document.getElementById('execute').addEventListener('click', function () {
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
-      console.log(this.response);
+      window.location.href = this.response;
     }
   };
   xhr.send(JSON.stringify(data));
