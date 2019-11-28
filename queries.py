@@ -1,5 +1,6 @@
 from utils import get_connection
-import sys
+
+
 def execute_query(num):
     conn, cursor = get_connection()
     if num == 1:
@@ -33,6 +34,7 @@ def execute_query(num):
     head = [desc[0] for desc in cursor.description]
     conn.close()
     return data, head
+
 
 def custom_query(query):
     conn, cursor = get_connection()

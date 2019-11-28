@@ -1,5 +1,6 @@
 from faker import Faker
 from faker.providers import BaseProvider
+
 import hashlib
 
 fake = Faker()

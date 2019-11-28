@@ -1,12 +1,13 @@
-from flask import Flask, render_template, send_from_directory, request
-import fastjsonschema
-import queries
-import populating
-from utils import get_pg_credentials
-
 from os import listdir
 from os.path import join
 from json import load
+
+from flask import Flask, render_template, send_from_directory, request
+import fastjsonschema
+
+import queries
+import populating
+from utils import get_pg_credentials
 
 SCHEMAS_FOLDER = 'schemas'
 
@@ -28,6 +29,7 @@ def index():
     elif (id):
         data, head = queries.execute_query(int(id))
         return render_template('index.html', data=data, head=head)
+
 
 @app.route('/generate')
 def gen():
@@ -52,7 +54,8 @@ def populate():
 
 @app.route('/download')
 def download():
-    return send_from_directory('populating', 'queries.sql', mime_type='text/plain', attachment_filename='queries.sql', as_attachment=True)
+    return send_from_directory('populating', 'queries.sql', mime_type='text/plain', attachment_filename='queries.sql',
+                               as_attachment=True)
 
 
 @app.route('/custom', methods=['POST'])
