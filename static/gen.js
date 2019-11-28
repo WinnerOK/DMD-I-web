@@ -33,13 +33,13 @@ const ids = [{
   field: 'pharmacists',
 }, {
   id: 'par_groups',
-  field: 'paramedics_group',
+  field: 'paramedics_groups',
 }, {
   id: 'chats',
   field: 'chats',
 }, {
   id: 'messages',
-  field: 'chats_messages',
+  field: 'chat_messages',
 }, {
   id: 'board_messages',
   field: 'notice_board_messages',
@@ -47,7 +47,7 @@ const ids = [{
 
 document.getElementById('execute').addEventListener('click', function () {
   let data = {};
-  for (let obj of ids) data[obj.field] = document.getElementById(obj.id).value;
+  for (let obj of ids) data[obj.field] = parseInt(document.getElementById(obj.id).value);
   data['execute_queries'] = document.getElementById('exe_queries').checked;
   data['truncate_tables'] = document.getElementById('trunc').checked;
 
