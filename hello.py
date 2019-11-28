@@ -9,9 +9,12 @@ from os.path import join
 from json import load
 
 SCHEMAS_FOLDER = 'schemas'
+schemas = {}
+for schema_file in listdir(SCHEMAS_FOLDER):
+    with open(join(SCHEMAS_FOLDER, schema_file), 'r') as json:
+        schemas[schema_file[:-5]] = fastjsonschema.compile(load(json))
 
 app = Flask(__name__)
-schemas = {}
 
 
 @app.route('/static/<path:path>')
@@ -63,7 +66,4 @@ def custom_query():
 
 
 if __name__ == '__main__':
-    for schema_file in listdir(SCHEMAS_FOLDER):
-        with open(join(SCHEMAS_FOLDER, schema_file), 'r') as json:
-            schemas[schema_file[:-5]] = fastjsonschema.compile(load(json))
     app.run()
