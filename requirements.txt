@@ -6,3 +6,4 @@ MarkupSafe
 Werkzeug
 flask_httpauth
 psycopg2
+mysql-connector-python

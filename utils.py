@@ -8,6 +8,9 @@ from typing import Tuple
 POSTGRES_PATTERN = re.compile(
     r"^postgres:\/\/(?P<user>.+):(?P<password>.+)@(?P<host>.+):(?P<port>\d+)\/(?P<database>.+)$")
 
+MYSQL_PATTERN = re.compile(
+    r"^mysql:\/\/(?P<user>.+):(?P<something>.+)@(?P<host>.+)\/(?P<database>.+)\?(?P<options>.+)$"
+)
 
 def get_pg_credentials() -> str:
     url = environ["DATABASE_URL"]
@@ -16,7 +19,10 @@ def get_pg_credentials() -> str:
 
 def get_sql_credentials() -> str:
     url = environ['CLEARDB_DATABASE_URL']
-    return url
+    password = 'd81ff108b7f287b'
+    port = 3306
+    _, user, something, host, database, options, __ = MYSQL_PATTERN.split(url)
+    return f'host: {host}<br>port: {port}<br>dbname: {database}<br>user: {user}<br>password: {password}<br>options: {options}'
 
 def get_connection() -> Tuple[connection, cursor]:
     credentials = dict(item.split(":") for item in get_pg_credentials().split('<br>'))
