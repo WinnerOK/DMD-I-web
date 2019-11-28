@@ -1,0 +1,90 @@
+{
+  "type": "object",
+  "required": [
+    "users",
+    "hr",
+    "doctors",
+    "receptionists",
+    "lab_technicians",
+    "inventory_managers",
+    "admin",
+    "nurses",
+    "paramedics",
+    "patients",
+    "pharmacists",
+    "paramedics_groups",
+    "chats",
+    "chat_messages",
+    "notice_board_messages",
+    "execute_queries",
+    "truncate_tables"
+  ],
+  "properties": {
+    "users": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "hr": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "doctors": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "receptionists": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "lab_technicians": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "inventory_managers": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "admin": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "nurses": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "paramedics": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "patients": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "pharmacists": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "paramedics_groups": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "chats": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "chat_messages": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "notice_board_messages": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "execute_queries": {
+      "type": "boolean"
+    },
+    "truncate_tables": {
+      "type": "boolean"
+    }
+  }
+}
