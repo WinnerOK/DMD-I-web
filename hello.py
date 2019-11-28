@@ -1,6 +1,6 @@
 from flask import Flask, render_template, send_from_directory, request
 import queries
-from utils import get_pg_credentials
+from utils import get_pg_credentials, get_sql_credentials
 
 app = Flask(__name__)
 
@@ -22,6 +22,10 @@ def index():
 @app.route('/cred/postgres')
 def postgres_cred():
     return get_pg_credentials()
+
+@app.route('/cred/mysql')
+def mysql_cred():
+    return get_sql_credentials()
 
 @app.route('/custom', methods=['POST'])
 def custom_query():

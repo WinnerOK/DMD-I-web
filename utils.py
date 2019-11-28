@@ -14,6 +14,9 @@ def get_pg_credentials() -> str:
     _, user, password, host, port, database, __ = POSTGRES_PATTERN.split(url)
     return f'host: {host}<br>port: {port}<br>dbname: {database}<br>user: {user}<br>password: {password}'
 
+def get_sql_credentials() -> str:
+    url = environ['CLEARDB_DATABASE_URL']
+    return url
 
 def get_connection() -> Tuple[connection, cursor]:
     credentials = dict(item.split(":") for item in get_pg_credentials().split('<br>'))
