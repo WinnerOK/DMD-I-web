@@ -473,7 +473,6 @@ def populate_prescription_dependant_tables(patients, pharmacists, inventory_mana
         prescriptions_entries = cur.fetchall()
         prescriptions_ids = [item[0] for item in prescriptions_entries]
 
-
     fields = [
         "name",
         "cost_per_unit",
@@ -848,37 +847,41 @@ def run_and_wait_threads(threads):
     threads.clear()
 
 
-def main():
+def main(
+        users: int = 150,
+        hr: int = 4,
+        doctors: int = 23,
+        receptionists: int = 2,
+        lab_technicians: int = 4,
+        inventory_managers: int = 2,
+        admin: int = 1,
+        nurses: int = 10,
+        paramedics: int = 5,
+        patients: int = 50,
+        pharmacists: int = 2,
+        paramedics_groups: int = 3,
+        chats: int = 5,
+        chat_messages: int = 20,
+        notice_board_messages: int = 10,
+        execute_queries: bool = False,
+        truncate_tables: bool = False) -> None:
+
+    global ONLY_PRODUCE_SQL
+    ONLY_PRODUCE_SQL = not execute_queries
+
     cur, conn = get_connection()
 
-    # cur.execute('truncate table usr.users cascade;')
-    # cur.execute('truncate table msg.chats cascade;')
-    # cur.execute('truncate table board.messages cascade;')
-    # cur.execute('truncate table meeting.redirections cascade;')
-    # cur.execute('truncate table finance.invoices cascade;')
-    # cur.execute('truncate table medical_data.prescriptions cascade;')
-    # cur.execute('truncate table inventory.inventory_items cascade;')
-    # cur.execute('truncate table ipc.in_patient_clinic_provided_services cascade;')
-    # cur.execute('truncate table ipc.in_patient_clinic_places cascade;')
-    # cur.execute('truncate table medical_data.medical_records cascade;')
-
-    users = 150
-    hr = 4
-    doctors = 23
-    receptionists = 2
-    lab_technicians = 4
-    inventory_managers = 2
-    admin = 1
-    nurses = 10
-    paramedics = 5
-    patients = 50
-    pharmacists = 2
-    paramedics_groups = 3
-
-    chats = 5
-    chat_messages = 20
-
-    notice_board_messages = 10
+    if truncate_tables:
+        cur.execute('truncate table usr.users cascade;')
+        cur.execute('truncate table msg.chats cascade;')
+        cur.execute('truncate table board.messages cascade;')
+        cur.execute('truncate table meeting.redirections cascade;')
+        cur.execute('truncate table finance.invoices cascade;')
+        cur.execute('truncate table medical_data.prescriptions cascade;')
+        cur.execute('truncate table inventory.inventory_items cascade;')
+        cur.execute('truncate table ipc.in_patient_clinic_provided_services cascade;')
+        cur.execute('truncate table ipc.in_patient_clinic_places cascade;')
+        cur.execute('truncate table medical_data.medical_records cascade;')
 
     # separate users to different staff and patients
     slices = split_people_ids([
@@ -971,6 +974,3 @@ def main():
 
     # sync threads
     run_and_wait_threads(threads)
-
-
-
