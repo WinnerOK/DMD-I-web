@@ -18,6 +18,10 @@ def index():
         data, head = queries.execute_query(int(id))
         return render_template('index.html', data=data, head=head)
 
+@app.route('/generate')
+def gen():
+    return render_template('generate.html')
+
 
 @app.route('/cred/postgres')
 def postgres_cred():

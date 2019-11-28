@@ -36,6 +36,17 @@ code {
     margin-right: 2em;
 }
 
+.title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title button {
+
+}
+
 @media screen and (max-width: 992px) {
     .body-wrapper {
         width: 90%;
@@ -103,6 +114,11 @@ code {
     height: 100%;
     transition: width .1s;
     width: 0;
+}
+
+.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 /* _____ */

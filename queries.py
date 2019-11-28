@@ -26,7 +26,11 @@ def execute_query(num):
         """)
     elif num == 5:
         cursor.execute("""
-            select * from usr.get_experiences_doctors();
+            select * from usr.get_experiences_doctors(
+                patients_per_year := 5,
+                patients_total := 100,
+                years_period := 10
+            );
         """)
 
     data = cursor.fetchall()
