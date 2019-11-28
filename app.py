@@ -1,5 +1,6 @@
 from flask import Flask, render_template, send_from_directory, request, send_file
 import fastjsonschema
+
 import queries
 import populating
 from utils import get_pg_credentials
@@ -31,6 +32,7 @@ def index():
     elif (id):
         data, head = queries.execute_query(int(id))
         return render_template('index.html', data=data, head=head)
+
 
 @app.route('/generate')
 def gen():

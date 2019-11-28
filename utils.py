@@ -1,9 +1,9 @@
-from psycopg2 import connect
-from psycopg2.extensions import connection, cursor
-
 import re
 from os import environ
 from typing import Tuple
+
+from psycopg2 import connect
+from psycopg2.extensions import connection, cursor
 
 POSTGRES_PATTERN = re.compile(
     r"^postgres:\/\/(?P<user>.+):(?P<password>.+)@(?P<host>.+):(?P<port>\d+)\/(?P<database>.+)$")

@@ -1,5 +1,6 @@
 from utils import get_connection
-import sys
+
+
 def execute_query(num):
     conn, cursor = get_connection()
     if num == 1:
@@ -26,17 +27,14 @@ def execute_query(num):
         """)
     elif num == 5:
         cursor.execute("""
-            select * from usr.get_experiences_doctors(
-                patients_per_year := 5,
-                patients_total := 100,
-                years_period := 10
-            );
+            select * from usr.get_experiences_doctors(patients_per_year := 5, patients_total := 100, years_period := 10);
         """)
 
     data = cursor.fetchall()
     head = [desc[0] for desc in cursor.description]
     conn.close()
     return data, head
+
 
 def custom_query(query):
     conn, cursor = get_connection()

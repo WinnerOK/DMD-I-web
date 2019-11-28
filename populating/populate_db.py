@@ -1,12 +1,14 @@
-import psycopg2
-from psycopg2.extensions import cursor, connection
 import requests
 from typing import Tuple
-from .rand_person import *
 from threading import Thread, Lock
 import random
 import re
 from collections import defaultdict
+
+import psycopg2
+from psycopg2.extensions import cursor, connection
+
+from .rand_person import *
 
 lock = Lock()
 
@@ -865,7 +867,6 @@ def main(
         notice_board_messages: int = 10,
         execute_queries: bool = False,
         truncate_tables: bool = False) -> None:
-
     global ONLY_PRODUCE_SQL
     ONLY_PRODUCE_SQL = not execute_queries
 
