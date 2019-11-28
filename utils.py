@@ -9,7 +9,7 @@ POSTGRES_PATTERN = re.compile(
     r"^postgres:\/\/(?P<user>.+):(?P<password>.+)@(?P<host>.+):(?P<port>\d+)\/(?P<database>.+)$")
 
 MYSQL_PATTERN = re.compile(
-    r"^mysql:\/\/(?P<user>.+):(?P<something>.+)@(?P<host>.+)\/(?P<database>.+)\?(?P<options>.+)$"
+    r"^mysql:\/\/(?P<user>.+):(?P<password>.+)@(?P<host>.+):(?P<port>\d+)\/(?P<database>.+)$"
 )
 
 def get_pg_credentials() -> str:
@@ -18,10 +18,8 @@ def get_pg_credentials() -> str:
     return f'host: {host}<br>port: {port}<br>dbname: {database}<br>user: {user}<br>password: {password}'
 
 def get_sql_credentials() -> str:
-    url = environ['CLEARDB_DATABASE_URL']
-    password = 'd81ff108b7f287b'
-    port = 3306
-    _, user, something, host, database, options, __ = MYSQL_PATTERN.split(url)
+    url = environ['JAWSDB_URL']
+    _, user, password, host, port, database, __ = MYSQL_PATTERN.split(url)
     return f'host: {host}<br>port: {port}<br>dbname: {database}<br>user: {user}<br>password: {password}<br>options: {options}'
 
 def get_connection() -> Tuple[connection, cursor]:
