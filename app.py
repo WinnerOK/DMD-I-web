@@ -1,18 +1,21 @@
-from os import listdir
-from os.path import join
-from json import load
-
-from flask import Flask, render_template, send_from_directory, request
+from flask import Flask, render_template, send_from_directory, request, send_file
 import fastjsonschema
 
 import queries
 import populating
 from utils import get_pg_credentials
 
+from os import listdir
+from os.path import join
+from json import load
+
 SCHEMAS_FOLDER = 'schemas'
+schemas = {}
+for schema_file in listdir(SCHEMAS_FOLDER):
+    with open(join(SCHEMAS_FOLDER, schema_file), 'r') as json:
+        schemas[schema_file[:-5]] = fastjsonschema.compile(load(json))
 
 app = Flask(__name__)
-schemas = {}
 
 
 @app.route('/static/<path:path>')
@@ -54,8 +57,7 @@ def populate():
 
 @app.route('/download')
 def download():
-    return send_from_directory('populating', 'queries.sql', mime_type='text/plain', attachment_filename='queries.sql',
-                               as_attachment=True)
+    return send_file('populating/queries.sql', mimetype='plain/text', as_attachment=True, attachment_filename='queries.sql')
 
 
 @app.route('/custom', methods=['POST'])
@@ -66,7 +68,4 @@ def custom_query():
 
 
 if __name__ == '__main__':
-    for schema_file in listdir(SCHEMAS_FOLDER):
-        with open(join(SCHEMAS_FOLDER, schema_file), 'r') as json:
-            schemas[schema_file[:-5]] = fastjsonschema.compile(load(json))
     app.run()

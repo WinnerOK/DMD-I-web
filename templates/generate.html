@@ -8,5 +8,102 @@
     <link rel="stylesheet" type="text/css" href="/static/styles.css">
 </head>
 <body>
+<div class="progress-container">
+    <div id="progress"></div>
+</div>
+<div class="body-wrapper">
+    <div class="title">
+        <h1>Phase III. Generate Database</h1>
+        <button type="button" id="generate"><a href="/">Go back</a></button>
+    </div>
+    <form>
+        <div class="actions">
+            <div class="form-field">
+                <label for="users">Users</label>
+                <input type="number" value="150" id="users">
+            </div>
+            <div class="form-field">
+                <label for="hr">HR</label>
+                <input type="number" value="4" id="hr">
+            </div>
+            <div class="form-field">
+                <label for="doctors">Doctors</label>
+                <input type="number" value="23" id="doctors">
+            </div>
+            <div class="form-field">
+                <label for="recept">Receptionists</label>
+                <input type="number" value="2" id="recept">
+            </div>
+        </div>
+        <div class="actions">
+            <div class="form-field">
+                <label for="lab_tech">Lab Technicians</label>
+                <input type="number" value="4" id="lab_tech">
+            </div>
+            <div class="form-field">
+                <label for="inventory">Inventory Managers</label>
+                <input type="number" value="2" id="inventory">
+            </div>
+            <div class="form-field">
+                <label for="admin">Admin</label>
+                <input type="number" value="1" id="admin">
+            </div>
+            <div class="form-field">
+                <label for="nurses">Nurses</label>
+                <input type="number" value="10" id="nurses">
+            </div>
+        </div>
+
+        <div class="actions">
+            <div class="form-field">
+                <label for="paramedics">Paramedics</label>
+                <input type="number" value="5" id="paramedics">
+            </div>
+            <div class="form-field">
+                <label for="patients">Patients</label>
+                <input type="number" value="50" id="patients">
+            </div>
+            <div class="form-field">
+                <label for="pharma">Pharmacists</label>
+                <input type="number" value="2" id="pharma">
+            </div>
+            <div class="form-field">
+                <label for="par_groups">Paramedics groups</label>
+                <input type="number" value="3" id="par_groups">
+            </div>
+        </div>
+
+        <div class="actions">
+            <div class="form-field">
+                <label for="chats">Chats</label>
+                <input type="number" value="5" id="chats">
+            </div>
+            <div class="form-field">
+                <label for="messages">Chat Messages</label>
+                <input type="number" value="20" id="messages">
+            </div>
+            <div class="form-field">
+                <label for="board_messages">Board Messages</label>
+                <input type="number" value="10" id="board_messages">
+            </div>
+        </div>
+
+        <div class="actions">
+            <div class="form-field">
+                <label for="exe_queries">Execute Queries</label>
+                <input type="checkbox" id="exe_queries">
+            </div>
+            <div class="form-field">
+                <label for="trunc">Truncate Database</label>
+                <input type="checkbox" id="trunc">
+            </div>
+        </div>
+
+        <div class="actions">
+            <button type="button" id="execute">Generate</button>
+        </div>
+    </form>
+</div>
+<script src="/static/gen.js"></script>
 </body>
 </html>
