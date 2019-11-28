@@ -31,6 +31,7 @@ def execute_query(num):
 
     data = cursor.fetchall()
     head = [desc[0] for desc in cursor.description]
+    conn.close()
     return data, head
 
 def custom_query(query):
@@ -38,4 +39,5 @@ def custom_query(query):
     cursor.execute(query)
     data = cursor.fetchall()
     head = [desc[0] for desc in cursor.description]
+    conn.close()
     return data, head
