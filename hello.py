@@ -23,10 +23,6 @@ def index():
 def postgres_cred():
     return get_pg_credentials()
 
-@app.route('/cred/mysql')
-def mysql_cred():
-    return get_sql_credentials()
-
 @app.route('/custom', methods=['POST'])
 def custom_query():
     query = request.get_json()['query']
