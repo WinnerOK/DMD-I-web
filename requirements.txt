@@ -8,3 +8,4 @@ psycopg2
 faker
 fastjsonschema
 requests
+sentry-sdk[flask]==0.13.4

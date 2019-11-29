@@ -1,19 +1,28 @@
 from flask import Flask, render_template, send_from_directory, request, send_file
 import fastjsonschema
+import sentry_sdk
+from sentry_sdk.integrations.flask import FlaskIntegration
 
 import queries
 import populating
 from utils import get_pg_credentials
 
-from os import listdir
+from os import listdir, getenv
 from os.path import join
 from json import load
 
 SCHEMAS_FOLDER = 'schemas'
+
 schemas = {}
 for schema_file in listdir(SCHEMAS_FOLDER):
     with open(join(SCHEMAS_FOLDER, schema_file), 'r') as json:
         schemas[schema_file[:-5]] = fastjsonschema.compile(load(json))
+
+if not getenv("DEBUG", False):
+    sentry_sdk.init(
+        dsn=getenv('SENTRY_DSN'),
+        integrations=[FlaskIntegration()]
+    )
 
 app = Flask(__name__)
 
